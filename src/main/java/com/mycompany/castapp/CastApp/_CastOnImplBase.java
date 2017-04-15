@@ -1,4 +1,4 @@
-package CastApp;
+package com.mycompany.castapp.CastApp;
 
 
 /**
@@ -9,7 +9,7 @@ package CastApp;
 */
 
 public abstract class _CastOnImplBase extends org.omg.CORBA.portable.ObjectImpl
-                implements CastApp.CastOn, org.omg.CORBA.portable.InvokeHandler
+                implements com.mycompany.castapp.CastApp.CastOn, org.omg.CORBA.portable.InvokeHandler
 {
 
   // Constructors

@@ -1,4 +1,4 @@
-package CastApp;
+package com.mycompany.castapp.CastApp;
 
 /**
 * CastApp/CastOnHolder.java .
@@ -9,30 +9,30 @@ package CastApp;
 
 public final class CastOnHolder implements org.omg.CORBA.portable.Streamable
 {
-  public CastApp.CastOn value = null;
+  public com.mycompany.castapp.CastApp.CastOn value = null;
 
   public CastOnHolder ()
   {
   }
 
-  public CastOnHolder (CastApp.CastOn initialValue)
+  public CastOnHolder (com.mycompany.castapp.CastApp.CastOn initialValue)
   {
     value = initialValue;
   }
 
   public void _read (org.omg.CORBA.portable.InputStream i)
   {
-    value = CastApp.CastOnHelper.read (i);
+    value = com.mycompany.castapp.CastApp.CastOnHelper.read (i);
   }
 
   public void _write (org.omg.CORBA.portable.OutputStream o)
   {
-    CastApp.CastOnHelper.write (o, value);
+    com.mycompany.castapp.CastApp.CastOnHelper.write (o, value);
   }
 
   public org.omg.CORBA.TypeCode _type ()
   {
-    return CastApp.CastOnHelper.type ();
+    return com.mycompany.castapp.CastApp.CastOnHelper.type ();
   }
 
 }

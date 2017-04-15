@@ -1,4 +1,4 @@
-package CastApp;
+package com.mycompany.castapp.CastApp;
 
 
 /**
@@ -12,7 +12,7 @@ abstract public class CastOnHelper
 {
   private static String  _id = "IDL:CastApp/CastOn:1.0";
 
-  public static void insert (org.omg.CORBA.Any a, CastApp.CastOn that)
+  public static void insert (org.omg.CORBA.Any a, com.mycompany.castapp.CastApp.CastOn that)
   {
     org.omg.CORBA.portable.OutputStream out = a.create_output_stream ();
     a.type (type ());
@@ -20,7 +20,7 @@ abstract public class CastOnHelper
     a.read_value (out.create_input_stream (), type ());
   }
 
-  public static CastApp.CastOn extract (org.omg.CORBA.Any a)
+  public static com.mycompany.castapp.CastApp.CastOn extract (org.omg.CORBA.Any a)
   {
     return read (a.create_input_stream ());
   }
@@ -30,7 +30,7 @@ abstract public class CastOnHelper
   {
     if (__typeCode == null)
     {
-      __typeCode = org.omg.CORBA.ORB.init ().create_interface_tc (CastApp.CastOnHelper.id (), "CastOn");
+      __typeCode = org.omg.CORBA.ORB.init ().create_interface_tc (com.mycompany.castapp.CastApp.CastOnHelper.id (), "CastOn");
     }
     return __typeCode;
   }
@@ -40,43 +40,43 @@ abstract public class CastOnHelper
     return _id;
   }
 
-  public static CastApp.CastOn read (org.omg.CORBA.portable.InputStream istream)
+  public static com.mycompany.castapp.CastApp.CastOn read (org.omg.CORBA.portable.InputStream istream)
   {
     return narrow (istream.read_Object (_CastOnStub.class));
   }
 
-  public static void write (org.omg.CORBA.portable.OutputStream ostream, CastApp.CastOn value)
+  public static void write (org.omg.CORBA.portable.OutputStream ostream, com.mycompany.castapp.CastApp.CastOn value)
   {
     ostream.write_Object ((org.omg.CORBA.Object) value);
   }
 
-  public static CastApp.CastOn narrow (org.omg.CORBA.Object obj)
+  public static com.mycompany.castapp.CastApp.CastOn narrow (org.omg.CORBA.Object obj)
   {
     if (obj == null)
       return null;
-    else if (obj instanceof CastApp.CastOn)
-      return (CastApp.CastOn)obj;
+    else if (obj instanceof com.mycompany.castapp.CastApp.CastOn)
+      return (com.mycompany.castapp.CastApp.CastOn)obj;
     else if (!obj._is_a (id ()))
       throw new org.omg.CORBA.BAD_PARAM ();
     else
     {
       org.omg.CORBA.portable.Delegate delegate = ((org.omg.CORBA.portable.ObjectImpl)obj)._get_delegate ();
-      CastApp._CastOnStub stub = new CastApp._CastOnStub ();
+      com.mycompany.castapp.CastApp._CastOnStub stub = new com.mycompany.castapp.CastApp._CastOnStub ();
       stub._set_delegate(delegate);
       return stub;
     }
   }
 
-  public static CastApp.CastOn unchecked_narrow (org.omg.CORBA.Object obj)
+  public static com.mycompany.castapp.CastApp.CastOn unchecked_narrow (org.omg.CORBA.Object obj)
   {
     if (obj == null)
       return null;
-    else if (obj instanceof CastApp.CastOn)
-      return (CastApp.CastOn)obj;
+    else if (obj instanceof com.mycompany.castapp.CastApp.CastOn)
+      return (com.mycompany.castapp.CastApp.CastOn)obj;
     else
     {
       org.omg.CORBA.portable.Delegate delegate = ((org.omg.CORBA.portable.ObjectImpl)obj)._get_delegate ();
-      CastApp._CastOnStub stub = new CastApp._CastOnStub ();
+      com.mycompany.castapp.CastApp._CastOnStub stub = new com.mycompany.castapp.CastApp._CastOnStub ();
       stub._set_delegate(delegate);
       return stub;
     }

@@ -1,4 +1,4 @@
-package CastApp;
+package com.mycompany.castapp.CastApp;
 
 
 /**

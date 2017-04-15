@@ -1,9 +1,10 @@
-package com.mycompany.castingapp;
+package com.mycompany.castapp;
 
+import com.mycompany.castapp.CastApp.CastOnHelper;
+import com.mycompany.castapp.CastApp.CastOn;
 import java.util.Properties;
 import java.io.*;
 import org.omg.CORBA.*;
-import CastApp.*;
 import org.omg.CosNaming.* ;
 import org.omg.CosNaming.NamingContextPackage.*;
 

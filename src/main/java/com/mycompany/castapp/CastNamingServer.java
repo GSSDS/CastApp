@@ -1,4 +1,4 @@
-package com.mycompany.castingapp;
+package com.mycompany.castapp;
 
 import org.omg.CORBA.*;
 import org.omg.CosNaming.* ;

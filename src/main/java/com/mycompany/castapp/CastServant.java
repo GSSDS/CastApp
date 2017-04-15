@@ -1,6 +1,6 @@
-package com.mycompany.castingapp;
+package com.mycompany.castapp;
 
-import CastApp.*;
+import com.mycompany.castapp.CastApp._CastOnImplBase;
 
 class CastServant extends _CastOnImplBase
 {

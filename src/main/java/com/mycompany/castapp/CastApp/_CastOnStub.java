@@ -1,4 +1,4 @@
-package CastApp;
+package com.mycompany.castapp.CastApp;
 
 
 /**
@@ -8,7 +8,7 @@ package CastApp;
 * 15 April 2017 16:06:15 o'clock IST
 */
 
-public class _CastOnStub extends org.omg.CORBA.portable.ObjectImpl implements CastApp.CastOn
+public class _CastOnStub extends org.omg.CORBA.portable.ObjectImpl implements com.mycompany.castapp.CastApp.CastOn
 {
 
   public String CastOn ()
