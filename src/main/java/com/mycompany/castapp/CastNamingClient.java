@@ -2,17 +2,41 @@ package com.mycompany.castapp;
 
 import com.mycompany.castapp.CastApp.CastOnHelper;
 import com.mycompany.castapp.CastApp.CastOn;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Properties;
-import java.io.*;
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
+import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
 import org.omg.CORBA.*;
 import org.omg.CosNaming.* ;
-import org.omg.CosNaming.NamingContextPackage.*;
 
 
 public class CastNamingClient
 {
     public static NamingContextExt rootCtx;
 
+	private static class SampleListener implements ServiceListener {
+		@Override
+		public void serviceAdded(ServiceEvent event) {
+			System.out.println("Service added: " + event.getInfo());
+		}
+
+		@Override
+		public void serviceRemoved(ServiceEvent event) {
+			System.out.println("Service removed: " + event.getInfo());
+		}
+
+		@Override
+		public void serviceResolved(ServiceEvent event) {
+                    ServiceInfo info = event.getInfo();
+                    int port = info.getPort();
+                    String path = info.getNiceTextString().split("=")[1];
+                    GetRequest.request("http://localhost:"+port+"/"+path);
+		}
+	}
     public static void list(NamingContext n, String indent) {
         try {
                 final int batchSize = 1;
@@ -43,14 +67,27 @@ public class CastNamingClient
         }
     }
 
-    public static void main(String args[])
+    public static void main(String args[]) throws InterruptedException
     {
+        
+              	try {
+		// Create a JmDNS instance
+	       JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+
+		// Add a service listener
+	       jmdns.addServiceListener("_http._tcp.local.", new SampleListener());
+
+		} catch (UnknownHostException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
 	try{
             NameComponent nc[]= new NameComponent[2];
 			
 	        //Create ORB
             Properties props = new Properties();
-            props.put("org.omg.CORBA.ORBInitialPort", "1050");
+            props.put("org.omg.CORBA.ORBInitialPort", "900");
 	        ORB orb = ORB.init(args, props);
             org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
             rootCtx = NamingContextExtHelper.narrow(objRef);
@@ -63,6 +100,7 @@ public class CastNamingClient
             nc[0] = new NameComponent("Context1", "Context");
             nc[1] = new NameComponent("Object1", "Object");
 
+            //need to add in more like CastOn for the other functions 
             org.omg.CORBA.Object objCast = rootCtx.resolve(nc);
             CastOn CastRef = CastOnHelper.narrow(objCast);
 

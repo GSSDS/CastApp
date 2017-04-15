@@ -1,12 +1,29 @@
 package com.mycompany.castapp;
 
+import java.io.IOException;
+import java.net.InetAddress;
 import org.omg.CORBA.*;
 import org.omg.CosNaming.* ;
 import java.util.Properties;
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 
 public class CastNamingServer{
 
 	public static void main (String args[]) {
+            
+             try {
+            // Create a JmDNS instance
+            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+
+            // Register a service
+            ServiceInfo serviceInfo = ServiceInfo.create("_http._tcp.local.", "device", 8000, "path=index.html");
+            jmdns.registerService(serviceInfo);
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
 		try
 		{
 			
@@ -14,7 +31,7 @@ public class CastNamingServer{
 
 	    	//Create Orb and initialise
 	    	Properties props = new Properties();
-        	props.put("org.omg.CORBA.ORBInitialPort", "1050");
+        	props.put("org.omg.CORBA.ORBInitialPort", "900");
         	ORB orb = ORB.init(args, props);
 
 			CastServant CastServ = new CastServant();
@@ -49,6 +66,6 @@ public class CastNamingServer{
 			System.err.println("Error: "+e);
 			e.printStackTrace(System.out);
 		}
-
+                
 	}
 }
