@@ -1,15 +1,14 @@
 package com.mycompany.castapp;
 
-import com.mycompany.castapp.CastApp._CastOnImplBase;
 import java.io.IOException;
 import java.net.InetAddress;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
-//Code Based on Tutorials supplied on moodle https://moodle.ncirl.ie/course/view.php?id=806
-class CastServant extends _CastOnImplBase {
+//By extending class only one is needed in IDL, keeps IDL cleaner
+class LightsServant extends CastServant {
 
-    public String CastOn() {
+    public String LightsOff() {
         System.out.println("Received a call.");
 
         try {
@@ -17,20 +16,18 @@ class CastServant extends _CastOnImplBase {
             JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 
             // Register a service
-            ServiceInfo serviceInfo = ServiceInfo.create("_http._tcp.local.", "CastDevice", 8000, "path=index.html");
+            ServiceInfo serviceInfo = ServiceInfo.create("_http._tcp.local.", "Lights", 8000, "path=index.html");
             jmdns.registerService(serviceInfo);
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        boolean LightsOff = false;
 
-        boolean CastOn = false;
-
-        if (!CastOn) {
-            CastOn = true;
-
+        if (!LightsOff) {
+            LightsOff = true;
         }
 
-        return "\n Cast Device on " + CastOn + "";
+        return "\n Lights are switched off " + LightsOff + "\n";
     }
 }
