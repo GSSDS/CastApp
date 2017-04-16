@@ -3,6 +3,7 @@ package com.mycompany.castapp;
 import CastRequest.Cast;
 import com.google.gson.Gson;
 import com.mycompany.castapp.CastApp._CastOnImplBase;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -16,7 +17,7 @@ class CastServant extends _CastOnImplBase {
     Gson gson = new Gson();
     boolean CastOn = false;
     String ReturnMessage = "";
-    String FilePath = "C:\\Users\\Graham\\Documents\\NetBeansProjects\\CastApp\\src\\main\\java\\com\\mycompany\\castapp\\cast.json";
+   
 
     public String CastOn() {
 
@@ -37,9 +38,9 @@ class CastServant extends _CastOnImplBase {
         //create contexts and then if Java Object attribute matches value add objects
         try {
 
-            //need to change this to your local directory
-            //TODO: possibly change to come from HTTP server instead
-            Reader reader = new FileReader(FilePath);
+           //getting resource form static context
+            File file = new File( CastServant.class.getResource( "/cast.json" ).toURI() );
+            Reader reader = new FileReader(file);
 
             // Convert JSON to Java Object
             Cast cast = gson.fromJson(reader, Cast.class);

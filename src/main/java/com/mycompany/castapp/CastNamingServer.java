@@ -2,6 +2,7 @@ package com.mycompany.castapp;
 
 import CastRequest.Cast;
 import com.google.gson.Gson;
+import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import org.omg.CORBA.*;
@@ -13,13 +14,12 @@ public class CastNamingServer {
 
     public static void main(String args[]) {
         Gson gson = new Gson();
-        String FilePath = "C:\\Users\\Graham\\Documents\\NetBeansProjects\\CastApp\\src\\main\\java\\com\\mycompany\\castapp\\cast.json";
         //create contexts and then if Java Object attribute matches value add objects
         try {
 
-            //need to change this to your local directory
-            //TODO: possibly change to come from HTTP server instead
-            Reader reader = new FileReader(FilePath);
+             //getting resource form static context
+          File file = new File( CastNamingServer.class.getResource( "/cast.json" ).toURI() );
+            Reader reader = new FileReader(file);
 
             // Convert JSON to Java Object
             Cast cast = gson.fromJson(reader, Cast.class);

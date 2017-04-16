@@ -1,6 +1,7 @@
 package com.mycompany.castapp;
 
 import CastRequest.Cast;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -31,9 +32,9 @@ class SoundBarServant extends LightsServant {
 
         try {
 
-            //need to change this to your local directory
-            //TODO: possibly change to come from HTTP server instead
-            Reader reader = new FileReader(FilePath);
+            //getting resource form static context
+            File file = new File( SoundBarServant.class.getResource( "/cast.json" ).toURI() );
+            Reader reader = new FileReader(file);
 
             // Convert JSON to Java Object
             Cast cast = gson.fromJson(reader, Cast.class);
