@@ -13,9 +13,7 @@ import javax.jmdns.ServiceListener;
 import org.omg.CORBA.*;
 import org.omg.CosNaming.*;
 
-
 //Code Based on Tutorials supplied on moodle https://moodle.ncirl.ie/course/view.php?id=806
-
 public class CastNamingClient {
 
     public static NamingContextExt rootCtx;

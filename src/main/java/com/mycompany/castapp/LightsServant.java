@@ -1,12 +1,17 @@
 package com.mycompany.castapp;
 
+import CastRequest.Cast;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.net.InetAddress;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
 //By extending class only one is needed in IDL, keeps IDL cleaner
 class LightsServant extends CastServant {
+
+    boolean LightsOff = false;
 
     public String LightsOff() {
         System.out.println("Received a call.");
@@ -22,12 +27,30 @@ class LightsServant extends CastServant {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        boolean LightsOff = false;
 
-        if (!LightsOff) {
-            LightsOff = true;
+        try {
+
+            //need to change this to your local directory
+            //TODO: possibly change to come from HTTP server instead
+            Reader reader = new FileReader(FilePath);
+
+            // Convert JSON to Java Object
+            Cast cast = gson.fromJson(reader, Cast.class);
+
+            //Switch on or off depending on JSON
+            if ("On".equals(cast.Lights)) {
+                LightsOff = false;
+                ReturnMessage = "Lights Device On ";
+            }
+            if ("Off".equals(cast.Lights)) {
+                LightsOff = true;
+                ReturnMessage = "Lights Device On ";
+            }
+        } catch (Exception e) {
+            System.err.println("Error: " + e);
+            e.printStackTrace(System.out);
         }
 
-        return "\n Lights are switched off " + LightsOff + "\n";
+        return "\n" + ReturnMessage + LightsOff + "\n";
     }
 }

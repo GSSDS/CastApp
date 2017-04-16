@@ -9,18 +9,17 @@ import org.omg.CosNaming.*;
 import java.util.Properties;
 
 //Code Based on Tutorials supplied on moodle https://moodle.ncirl.ie/course/view.php?id=806
-
 public class CastNamingServer {
 
     public static void main(String args[]) {
         Gson gson = new Gson();
-
+        String FilePath = "C:\\Users\\Graham\\Documents\\NetBeansProjects\\CastApp\\src\\main\\java\\com\\mycompany\\castapp\\cast.json";
         //create contexts and then if Java Object attribute matches value add objects
         try {
-            
+
             //need to change this to your local directory
             //TODO: possibly change to come from HTTP server instead
-            Reader reader = new FileReader("C:\\Users\\Graham\\Documents\\NetBeansProjects\\CastApp\\src\\main\\java\\com\\mycompany\\castapp\\cast.json");
+            Reader reader = new FileReader(FilePath);
 
             // Convert JSON to Java Object
             Cast cast = gson.fromJson(reader, Cast.class);
