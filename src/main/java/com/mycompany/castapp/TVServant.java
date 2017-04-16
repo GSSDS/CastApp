@@ -40,7 +40,7 @@ class TVServant extends SoundBarServant {
             //Switch on or off depending on JSON
             if ("On".equals(cast.Tv)) {
                 TvOn = true;
-                Input = "TV";
+                Input = "HDMI";
                 ReturnMessage = "TV Device On ";
             }
             if ("Off".equals(cast.Tv)) {

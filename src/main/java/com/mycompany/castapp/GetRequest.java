@@ -8,7 +8,7 @@ package com.mycompany.castapp;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-
+//Code Based on Tutorials supplied on moodle https://moodle.ncirl.ie/course/view.php?id=806
 public class GetRequest {
 
     public static void request(String url) {
