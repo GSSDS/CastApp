@@ -16,7 +16,7 @@ class TVServant extends SoundBarServant {
             JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 
             // Register a service
-            ServiceInfo serviceInfo = ServiceInfo.create("_http._tcp.local.", "SoundBar", 8000, "path=index.html");
+            ServiceInfo serviceInfo = ServiceInfo.create("_http._tcp.local.", "TV", 8000, "path=index.html");
             jmdns.registerService(serviceInfo);
 
         } catch (IOException e) {
