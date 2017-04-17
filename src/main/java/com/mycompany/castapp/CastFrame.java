@@ -145,7 +145,7 @@ public class CastFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "turning on devices this may take a couple of seconds pleae click ok");
+        JOptionPane.showMessageDialog(null, "turning on devices this may take a couple of seconds please click ok");
 
         String[] args;
         args = null;
