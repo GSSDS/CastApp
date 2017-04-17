@@ -17,8 +17,8 @@ public class CastNamingServer {
         //create contexts and then if Java Object attribute matches value add objects
         try {
 
-             //getting resource form static context
-          File file = new File( CastNamingServer.class.getResource( "/cast.json" ).toURI() );
+            //getting resource form static context
+            File file = new File(CastNamingServer.class.getResource("/cast.json").toURI());
             Reader reader = new FileReader(file);
 
             // Convert JSON to Java Object
@@ -97,7 +97,9 @@ public class CastNamingServer {
                 Context4.rebind(nc, CastServ);
                 System.out.println("Object 'OffState' added to Lights.");
             }
-
+            Thread.sleep(5000);
+            CastFrame.Loading.setText("Ready to go");
+            CastFrame.OnButton.setEnabled(true);
             //run the orb
             orb.run();
 

@@ -10,12 +10,17 @@ import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
+import javax.swing.JOptionPane;
 import org.omg.CORBA.*;
 import org.omg.CosNaming.*;
 
 //Code Based on Tutorials supplied on moodle https://moodle.ncirl.ie/course/view.php?id=806
-public class CastNamingClient {
+public class CastNamingClient extends CastFrame {
 
+    static String castresult = "";
+    static String tvresult = "";
+    static String sbresult = "";
+    static String lightresult = "";
     public static NamingContextExt rootCtx;
 
     private static class SampleListener implements ServiceListener {
@@ -69,8 +74,10 @@ public class CastNamingClient {
         }
     }
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) {
+
         try {
+
             // Create a JmDNS instance
             JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 
@@ -84,6 +91,7 @@ public class CastNamingClient {
         }
 
         try {
+
             NameComponent nc[] = new NameComponent[2];
 
             //Create ORB
@@ -106,23 +114,30 @@ public class CastNamingClient {
 
             System.out.println("\nRequest recieved turning on cast device \n");
             String result = CastRef.CastOn();
+            castresult = result;
             System.out.println(result);
+            JOptionPane.showMessageDialog(null, result);
 
             //Other servants extend each other so methods from each class can be accessed from TVServant
             TVServant tv = new TVServant();
 
             System.out.println("\nRequest recieved turning on TV and Changing Input \n");
             String TvResult = tv.TvOn();
+            tvresult = TvResult;
             System.out.println(TvResult);
+            JOptionPane.showMessageDialog(null, TvResult);
 
             System.out.println("\nRequest recieved turning on SoundBar and Changing Input \n");
             String SbResult = tv.SoundBarOn();
+            sbresult = SbResult;
             System.out.println(SbResult);
+            JOptionPane.showMessageDialog(null, SbResult);
 
-            tv.LightsOff();
             System.out.println("\nRequest recieved turning Off Lights \n");
             String LightResult = tv.LightsOff();
+            lightresult = LightResult;
             System.out.println(LightResult);
+            JOptionPane.showMessageDialog(null, LightResult);
 
         } catch (Exception e) {
             System.out.println("ERROR : " + e);

@@ -40,11 +40,11 @@ class LightsServant extends CastServant {
 
             //Switch on or off depending on JSON
             if ("On".equals(cast.Lights)) {
-                LightsOff = false;
+                LightsOff = true;
                 ReturnMessage = "Lights Device On ";
             }
             if ("Off".equals(cast.Lights)) {
-                LightsOff = true;
+                LightsOff = false;
                 ReturnMessage = "Lights Device On ";
             }
         } catch (Exception e) {

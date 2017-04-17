@@ -13,13 +13,13 @@ import com.sun.net.httpserver.HttpServer;
 
 public class HTTPServer {
 
-    public static void main(String[] args) throws Exception {
+    public static void RunServer()throws Exception {
+        
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
         server.createContext("/index.html", new MyHandler());
         server.setExecutor(null); // creates a default executor
-        server.start();
+        server.start();  
     }
-
     static class MyHandler implements HttpHandler {
 
         @Override
