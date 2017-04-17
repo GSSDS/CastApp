@@ -17,7 +17,7 @@ public class CastNamingServer {
         //create contexts and then if Java Object attribute matches value add objects
         try {
 
-            //getting resource form static context
+            //getting resource from static context
             File file = new File(CastNamingServer.class.getResource("/cast.json").toURI());
             Reader reader = new FileReader(file);
 
@@ -43,20 +43,20 @@ public class CastNamingServer {
             //convert to naming context
             NamingContext rootCtx = NamingContextHelper.narrow(objRef);
 
-            //Context1
+
             //add CastDevice to root 
             nc[0] = new NameComponent("CastDevice", "Context");
             NamingContext Context1 = rootCtx.bind_new_context(nc);
             System.out.println("Context 'CastDevice' added to Name Space.");
-
+            //add TV to root 
             nc[0] = new NameComponent("TV", "Context");
             NamingContext Context2 = rootCtx.bind_new_context(nc);
             System.out.println("Context 'TV' added to Name Space.");
-
+            //add Soundbar to root 
             nc[0] = new NameComponent("Soundbar", "Context");
             NamingContext Context3 = rootCtx.bind_new_context(nc);
             System.out.println("Context 'Soundbar' added to Name Space.");
-
+            //add Lights to root 
             nc[0] = new NameComponent("Lights", "Context");
             NamingContext Context4 = rootCtx.bind_new_context(nc);
             System.out.println("Context 'Lights' added to Name Space.");
@@ -81,7 +81,7 @@ public class CastNamingServer {
 
             //Turn Soundbar on and change input 
             if ("On".equals(cast.SoundBar)) {
-                //bind OnState to CastDevice
+                //bind OnState and ChangeInput to SoundBar
                 nc[0] = new NameComponent("OnState", "Object");
                 Context3.rebind(nc, CastServ);
                 System.out.println("Object 'OnState' added to SoundBar.");
@@ -92,7 +92,7 @@ public class CastNamingServer {
             }
             //Turn Lights off
             if ("Off".equals(cast.Lights)) {
-                //bind OnState to CastDevice
+                //bind OffState to Lights
                 nc[0] = new NameComponent("OffState", "Object");
                 Context4.rebind(nc, CastServ);
                 System.out.println("Object 'OffState' added to Lights.");
