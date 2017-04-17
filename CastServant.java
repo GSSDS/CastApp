@@ -16,17 +16,4 @@ class CastServant extends _CastOnImplBase
 		
 		return "\n Cast Device on " +CastOn+ "";
     }
-    
-    public String TeleOn()
-    {
-        System.out.println("Received a call.");
-		boolean TeleOn = false;
-		
-		if(!TeleOn)
-                {
-                    TeleOn = true;
-                }
-		
-		return "\n Television on " +TeleOn+ "";
-    }
 }

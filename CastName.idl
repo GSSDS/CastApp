@@ -1,0 +1,8 @@
+module CastApp
+{
+  interface CastOn
+  { 
+    string CastOn();
+  };
+};
+

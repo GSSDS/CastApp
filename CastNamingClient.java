@@ -69,14 +69,7 @@ public class CastNamingClient
             System.out.println("\nRequest recieved turning on cast device");
             String result = CastRef.CastOn();
             System.out.println(result);
-            
-            
-            System.out.println("\nRequest received, turning on television");
-            
-           
-           
-            
-            
+
             } catch (Exception e) {
                 System.out.println("ERROR : " + e) ;
                 e.printStackTrace(System.out);
